@@ -12,6 +12,19 @@ public class Main
     public static void main(String[] args)
     {
 
+        //region Changing directories
+        /*
+        Path testPath = Paths.get("").toAbsolutePath();
+
+        System.out.println(testPath);
+
+        testPath = testPath.resolve("../../../").normalize();
+
+        System.out.println();
+        System.out.println(testPath);
+         */
+        //endregion
+
         //region Read from file
         /*
         Path p = Paths.get("Resources","Test1.txt"); // Benötigen wir als Verweis zu unserer Datei; dynamisch, BS unabhängig
@@ -29,6 +42,7 @@ public class Main
         //endregion
 
         //region Copy content from one file to another. Start at the word "Lorem"
+        /*
         Path targetPath = Paths.get("Resources","Output_Aufgabe_1.txt");
         Path sourcePath = Paths.get(bausteinPath.toString(),"Download\\20_InputOutputStreams\\src\\aufgaben\\output\\Aufgabe_1.txt");
 
@@ -65,6 +79,9 @@ public class Main
         {
             ex.printStackTrace();
         }
+         */
         //endregion
+
+
     }
 }
