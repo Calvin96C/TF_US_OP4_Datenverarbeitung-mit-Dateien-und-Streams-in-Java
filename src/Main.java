@@ -1,3 +1,5 @@
+import Utils.FilesAndPathsUtil;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -6,7 +8,7 @@ import java.nio.file.StandardCopyOption;
 
 public class Main
 {
-    private static String sourcePath = "src/aufgaben/";
+    private static String aufgabenPath = "src/aufgaben/";
     private static Path projectPath = Paths.get("").toAbsolutePath();  // Get project directory (inside "Main");
     private static Path bausteinPath = projectPath.resolve("../../").normalize(); // Use "../" to go up one cirectory
 
@@ -45,9 +47,9 @@ public class Main
         //region Copy content from one file to another. Start at the word "Lorem"
         /*
         Path targetPath = Paths.get("Resources","Output_Aufgabe_1.txt");
-        Path sourcePath = Paths.get(bausteinPath.toString(),"Download\\20_InputOutputStreams\\src\\aufgaben\\output\\Aufgabe_1.txt");
+        Path aufgabenPath = Paths.get(bausteinPath.toString(),"Download\\20_InputOutputStreams\\src\\aufgaben\\output\\Aufgabe_1.txt");
 
-        try(BufferedReader reader = Files.newBufferedReader(sourcePath);
+        try(BufferedReader reader = Files.newBufferedReader(aufgabenPath);
             BufferedWriter writer = Files.newBufferedWriter(targetPath))
         {
             String line = reader.readLine(); // Set the reader file to its first line and write that into the line String
@@ -84,21 +86,38 @@ public class Main
         //endregion
 
         //region Copy file to a target file
-        /*
-        Path targetPath = Paths.get(projectPath.toString(),"src/Aufgaben/aufgabe_1/aufgabe_1.txt");
-        Path sourcePath = Paths.get(bausteinPath.toString(), "Download/20_InputOutputStreams/src/aufgaben/output/Aufgabe_1.txt");
+            //region Version 1
+            /*
+            Path targetPath = Paths.get(projectPath.toString(),"src/Aufgaben/aufgabe_1/aufgabe_1.txt");
+            Path aufgabenPath = Paths.get(bausteinPath.toString(), "Download/20_InputOutputStreams/src/aufgaben/output/Aufgabe_1.txt");
 
-        try
-        {
-            Files.createDirectories(targetPath.getParent()); // Make sure this directory exists, if not, create it.
+            try
+            {
+                Files.createDirectories(targetPath.getParent()); // Make sure this directory exists, if not, create it.
 
-            Files.copy(sourcePath,targetPath, StandardCopyOption.REPLACE_EXISTING); // In case this file exists, simply replace it.
-        }
-        catch(IOException ex)
-        {
-            ex.printStackTrace();
-        }
-         */
+                Files.copy(aufgabenPath,targetPath, StandardCopyOption.REPLACE_EXISTING); // In case this file exists, simply replace it.
+            }
+            catch(IOException ex)
+            {
+                ex.printStackTrace();
+            }
+             */
+            //endregion
+
+            //region Version 2
+            Path sourceFile = bausteinPath.resolve("Download/20_InputOutputStreams/src/aufgaben/output/Lösung1.java");
+            Path targetDirectory = Paths.get(aufgabenPath, "aufgabe_1/loesungen/loesung_dozent");
+
+            try
+            {
+                FilesAndPathsUtil.copyFileToDirectory(sourceFile,targetDirectory,true);
+            }
+            catch (IOException ex)
+            {
+                ex.printStackTrace();
+            }
+
+            //endregion
         //endregion
 
     }
