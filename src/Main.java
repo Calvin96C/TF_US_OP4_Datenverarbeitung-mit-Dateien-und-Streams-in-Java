@@ -2,6 +2,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 public class Main
 {
@@ -82,6 +83,23 @@ public class Main
          */
         //endregion
 
+        //region Copy file to a target file
+        /*
+        Path targetPath = Paths.get(projectPath.toString(),"src/Aufgaben/aufgabe_1/aufgabe_1.txt");
+        Path sourcePath = Paths.get(bausteinPath.toString(), "Download/20_InputOutputStreams/src/aufgaben/output/Aufgabe_1.txt");
+
+        try
+        {
+            Files.createDirectories(targetPath.getParent()); // Make sure this directory exists, if not, create it.
+
+            Files.copy(sourcePath,targetPath, StandardCopyOption.REPLACE_EXISTING); // In case this file exists, simply replace it.
+        }
+        catch(IOException ex)
+        {
+            ex.printStackTrace();
+        }
+         */
+        //endregion
 
     }
 }
