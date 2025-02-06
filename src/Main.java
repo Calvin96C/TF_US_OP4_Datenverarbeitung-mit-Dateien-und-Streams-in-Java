@@ -1,6 +1,8 @@
 import Utils.FilesAndPathsUtil;
 
 import java.io.*;
+import java.net.Inet4Address;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -105,6 +107,7 @@ public class Main
             //endregion
 
             //region Version 2
+        /*
             Path sourceFile = bausteinPath.resolve("Download/20_InputOutputStreams/src/aufgaben/output/Lösung1.java");
             Path targetDirectory = Paths.get(aufgabenPath, "aufgabe_1/loesungen/loesung_dozent");
 
@@ -116,7 +119,7 @@ public class Main
             {
                 ex.printStackTrace();
             }
-
+         */
             //endregion
         //endregion
 

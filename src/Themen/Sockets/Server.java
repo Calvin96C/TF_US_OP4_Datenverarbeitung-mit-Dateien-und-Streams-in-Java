@@ -10,6 +10,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
@@ -27,8 +31,9 @@ public class Server
         {
             e.printStackTrace();
         }
-
     }
+
+
 
     public static void start() throws IOException
     {
@@ -36,17 +41,18 @@ public class Server
         {
             System.out.println("Warte auf Verbindung...");
             // Wichtig! AutoFlush nicht vergessen!
-            try (Socket client = serverSocket.accept();
-                 BufferedReader reader = new BufferedReader(new InputStreamReader(client.getInputStream()));
-                 PrintWriter writer = new PrintWriter(client.getOutputStream(), true))
+            try (Socket socket = serverSocket.accept();
+                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                 PrintWriter writer = new PrintWriter(socket.getOutputStream(), true))
             {
+
                 System.out.println("Verbunden...");
 
                 // Solange der Socket nicht geschlossen ist...
-                while (!client.isClosed())
+                while (!socket.isClosed())
                 {
                     // lese einen Befehl aus dem Stream
-                    String command = reader.readLine();
+                    String command = reader.readLine(); // Hier wird pausiert, bis wir vom Client eine Antwort erhalten.
 
                     // Befehl ins Protokoll schreiben
                     String log = String.valueOf(LocalDateTime.now()).concat(" : ").concat(command).concat(System.lineSeparator());
@@ -75,7 +81,7 @@ public class Server
                         case "exit":
                             System.out.println("exit");
                             writer.println("bye!");
-                            client.close();
+                            socket.close();
                             break;
                         default:
                             System.out.println("default");

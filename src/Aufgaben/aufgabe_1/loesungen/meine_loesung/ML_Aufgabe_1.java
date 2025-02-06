@@ -20,7 +20,7 @@ public class ML_Aufgabe_1
         Path aufgabeMLFilePath = aufgabeMLPath.resolve("ml_text.txt");
 
         //region Schreiben Sie folgenden Text mittels Stream in eine Textdatei.
-        /*
+
         Path mlText = Paths.get(aufgabeMLPath.toString(),"ml_text.txt");
 
         // Create the file & directory in case it does not exist yet
@@ -63,7 +63,7 @@ public class ML_Aufgabe_1
         {
             ex.printStackTrace();
         }
-         */
+
         //endregion
 
         //region Schreiben Sie jeden 2. Buchstaben dieses Texts mittels Stream in eine Textdatei.
