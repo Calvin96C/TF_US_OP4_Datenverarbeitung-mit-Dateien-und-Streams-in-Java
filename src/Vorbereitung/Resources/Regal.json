@@ -1,0 +1,36 @@
+[ {
+  "id" : 2,
+  "title" : "Meine Erste XML Datei",
+  "description" : "Formatierung des grauens",
+  "currency" : "2020-07-22",
+  "date" : "EUR",
+  "price" : 50
+}, {
+  "id" : 3,
+  "title" : "Meine Erste XML Node, II",
+  "description" : "Die verbesserte Formatierung",
+  "currency" : "2023-05-22",
+  "date" : "EUR",
+  "price" : 60
+}, {
+  "id" : 5,
+  "title" : "Bucht buchungen für Anfänger",
+  "description" : "Einfallslose Wasserfälle",
+  "currency" : "2020-07-22",
+  "date" : "EUR",
+  "price" : 5000
+}, {
+  "id" : 43,
+  "title" : "Title für jeden",
+  "description" : "Buch über Title",
+  "currency" : "2022-07-22",
+  "date" : "EUR",
+  "price" : 20
+}, {
+  "id" : 74,
+  "title" : "Chronisch komisch",
+  "description" : "Ein witz",
+  "currency" : "2019-07-02",
+  "date" : "EUR",
+  "price" : 30
+} ]
