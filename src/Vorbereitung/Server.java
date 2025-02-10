@@ -27,21 +27,23 @@ public class Server
             {
                 System.out.println("Verbindung mit dem Client wurde erfolgreich aufgebaut.");
 
+//                @SuppressWarnings("unchecked")
+//                List<Buch> buecher = (List<Buch>) objectInputStream.readObject(); // immutable
+
+                // Fehler, da die Liste immutable ist
+                //Collections.sort(buecher, Comparator.comparing(Buch::getId));
+                //buecher.sort(Comparator.comparing(Buch::getId));
+
+                // Lösung
+                //List<Buch> sortierteBuecher = new ArrayList<>(buecher);
+
+                // Alternative
                 @SuppressWarnings("unchecked")
-                List<Buch> buecher = (List<Buch>) objectInputStream.readObject();
+                List<Buch> sortierteBuecher = new ArrayList<>((List<Buch>) objectInputStream.readObject());
 
-                if (buecher != null)
+                if (!sortierteBuecher.isEmpty())
                 {
-                    //Collections.sort(buecher, Comparator.comparing(Buch::getId));
-                    //buecher.sort(Comparator.comparing(Buch::getId));
-
-                    List<Buch> sortierteBuecher = new ArrayList<>(buecher);
                     sortierteBuecher.sort(Comparator.comparing(Buch::getId));
-
-//                    for (Buch buch : sortierteBuecher)
-//                    {
-//                        System.out.println("ID: " + buch.getId() + " -- Title: " + buch.getTitle());
-//                    }
 
                     objectOutputStream.writeObject(sortierteBuecher);
                     objectOutputStream.flush();
